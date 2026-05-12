@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Feedbacks</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Lista de Feedbacks</h1>
+
+        <% if (feedbacks.length === 0) { %>
+
+            <p>Nenhum feedback enviado.</p>
+
+        <% } %>
+
+        <% feedbacks.forEach((feedback, index) => { %>
+
+            <div class="card">
+
+                <h3><%= feedback.nome %></h3>
+
+                <p><%= feedback.comentario %></p>
+
+                <form action="/feedbacks/remover" method="POST">
+
+                    <input type="hidden" 
+                           name="indice" 
+                           value="<%= index %>">
+
+                    <button type="submit">
+                        Remover
+                    </button>
+
+                </form>
+
+            </div>
+
+        <% }) %>
+
+        <a href="/">Voltar</a>
+    </div>
+
+</body>
+</html>
